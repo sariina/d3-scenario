@@ -1,0 +1,3 @@
+src/vendors/*
+node_modules
+dist/*

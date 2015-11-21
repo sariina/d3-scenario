@@ -1,0 +1,24 @@
+{
+  "name": "scenario",
+  "version": "0.1.0",
+  "authors": [
+    "Sariina <hi@sariina.com>"
+  ],
+  "main": "src/js/scenario.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "code.sariina.com/d3_scenario",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/vendors/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.6"
+  }
+}
