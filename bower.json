@@ -9,7 +9,7 @@
     "globals"
   ],
   "license": "MIT",
-  "homepage": "code.sariina.com/d3_scenario",
+  "homepage": "code.sariina.com/scenario",
   "ignore": [
     "**/.*",
     "node_modules",
