@@ -3,13 +3,108 @@
 *this is a work in progress*
 
 Glue d3.js charts and animations together based on definable scenario.
-A `Scenario` is collection of `Scenes`. each `Scene` can be one the following types:
-
-1. **Simple**: a simple function, however you are free to define multiple steps inside the function, each steps should call the next step and the main function should be inside of a Promise.
-2. **Heartbeat**: consists of three functions, `start`, `heartbeat` and `end`, `start` and `end` are just like **Simple** scene. and heartbeat is meant to run forever by calling iteself at the end of its scene. heartbeat will end. by `mousedown` event
-3. **Parallel**: multiple **Simple** scene running toghere in parallel, when all of theire Promises resolved the scene is complete.
 
 # Usage
-Look inside example folder.
+
+1. Clone the repository (or install via bower)
+2. `bower install` inside the root
+3. create a HTML file and include d3.js and scenario.js in headers like below:
+```html
+<script src="../src/vendors/d3/d3.js"></script>
+<script src="../src/js/d3_scenario.js"></script>
+```
+4. initialize your scenario
+```javascript
+     
+      scenario.init({
+          speed:2, // multiplies animation speeds in miliseconds 
+          w: 1024, // width of main svg
+          h: 768 // height of main svg
+      });
+```
+4. create your scenario by adding `Scenes` - read below or look at `example` folder 
+
+## Scenes
+
+A `Scenario` is collection of `Scenes`. each `Scene` can be one the following types:
+
+1. **Simple**: a simple promisifed function,you are free to define multiple steps inside it, each steps should call the next step and the main function should be inside of a Promise.
+```javascript
+function my_simple_scene(){
+        return new Promise(function(resolve,reject){
+            var container = scenario.svg.append("g")
+                .attr("transform", "translate(" + scenario.w/2 + "," + scenario.h/2 + ")");
+            rect = container.append("rect")
+                .attr("width",100)
+                .attr("height",100)
+                .attr("fill","red");
+
+            rect.transition().duration(scenario.t(500))
+                .attr("width",300)
+                .call(endAll,resolve);
+        });
+}
+```
+2. **Heartbeat**: a class that returns an object consisting of three main methods, promisifed `start`, recurcive `heartbeat` and promisifed `end`. `start` and `end` are just like **Simple** scene type. and heartbeat is meant to run in an infinite loop by calling iteself. heartbeat will end by a `mousedown` event, `Scenario` takes care of ending it.
+```javascript
+function my_heartbeat_scene(){
+        var scene = {};
+        scene.start =  function(){
+            return new Promise(function(res,rej){
+                scene.rect = {};
+                var container = scenario.svg.append("g")
+                    .attr("transform", "translate(" + scenario.w/2 + "," + scenario.h/2 + ")");
+                scene.rect = container.append("rect")
+                    .attr("width",100)
+                    .attr("height",100)
+                    .attr("fill","red")
+                scene.rect.transition()
+                    .duration(scenario.t(500))
+                    .attr("width",400)
+                    .attr("height",400)
+                    .call(endAll,res);
+            });
+        };
+        scene.heartbeat = function(){
+            scene.rect.transition()
+                .duration(scenario.t(1000))
+                .attr("width",200)
+                .attr("height",200)
+                .call(endAll,function(){
+                    scene.rect.transition()
+                    .duration(1000)
+                    .attr("width",100)
+                    .attr("height",100)
+                    .call(endAll,scene.heartbeat);
+                });
+        };
+        scene.end = function(){
+            return new Promise(function(res,rej){
+                scene.rect.transition().
+                    duration(scenario.t(500))
+                    .attr("width",0)
+                    .attr("height",0)
+                    .call(endAll,function(){
+                        scene.rect.remove();
+                        res();
+                    });
+            });
+        };
+        return scene;
+    }
+```
+3. **Parallel**: multiple **Simple** scene running toghere in parallel, when all of theire Promises resolved the scene is complete.
+
+## Adding Scenes to scenario
+
+add your created scenes:
+```javascript
+scenario.add_scene(my_simple_scene);
+scenario.add_scene(my_heartbeat_scene);
+```
+## Start the animation
+`scenario.start()`
+
+
 
 
