@@ -6,14 +6,14 @@ Glue d3.js charts and animations together based on definable scenario.
 
 # Usage
 
- 1. Clone the repository (or install via bower)
- 2. `bower install` inside the root
- 3. create a HTML file and include d3.js and scenario.js in headers like below:
+- Clone the repository (or install via bower)
+- `bower install` inside the root
+- create a HTML file and include d3.js and scenario.js in headers like below:
 ```html
 <script src="../src/vendors/d3/d3.js"></script>
 <script src="../src/js/d3_scenario.js"></script>
 ```
- 4. initialize your scenario
+- initialize your scenario
 ```javascript
      
       scenario.init({
@@ -22,13 +22,13 @@ Glue d3.js charts and animations together based on definable scenario.
           h: 768 // height of main svg
       });
 ```
- 5. create your scenario by adding `Scenes` - read below or look at `example` folder 
+- create your scenario by adding `Scenes` - read below or look at `example` folder 
 
 ## Scenes
 
 A `Scenario` is collection of `Scenes`. each `Scene` can be one the following types:
 
- 1. **Simple**: a simple promisifed function,you are free to define multiple steps inside it, each steps should call the next step and the main function should be inside of a Promise.
+- **1.Simple**: a simple promisifed function,you are free to define multiple steps inside it, each steps should call the next step and the main function should be inside of a Promise.
 ```javascript
 function my_simple_scene(){
         return new Promise(function(resolve,reject){
@@ -45,7 +45,7 @@ function my_simple_scene(){
         });
 }
 ```
- 2. **Heartbeat**: a class that returns an object consisting of three main methods, promisifed `start`, recurcive `heartbeat` and promisifed `end`. `start` and `end` are just like **Simple** scene type. and heartbeat is meant to run in an infinite loop by calling iteself. heartbeat will end by a `mousedown` event, `Scenario` takes care of ending it.
+- **2.Heartbeat**: a class that returns an object consisting of three main methods, promisifed `start`, recurcive `heartbeat` and promisifed `end`. `start` and `end` are just like **Simple** scene type. and heartbeat is meant to run in an infinite loop by calling iteself. heartbeat will end by a `mousedown` event, `Scenario` takes care of ending it.
 ```javascript
 function my_heartbeat_scene(){
         var scene = {};
@@ -93,7 +93,10 @@ function my_heartbeat_scene(){
         return scene;
     }
 ```
- 3. **Parallel**: multiple **Simple** scene running toghere in parallel, when all of theire Promises resolved the scene is complete.
+- **3.Parallel**: multiple **Simple** scene running toghere in parallel, when all function's promises resolved the scene is complete. it should be defined as an array
+```javascript
+var my_parallel_scene = [my_simple_scene1,my_simple_scene2];
+```
 
 ## Adding Scenes to scenario
 
