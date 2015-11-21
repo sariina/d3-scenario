@@ -6,7 +6,7 @@ Glue d3.js charts and animations together based on definable scenario.
 
 # Usage
 
-- Clone the repository (or install via bower)
+- Clone or downlaod the repository
 - `bower install` inside the root
 - create a HTML file and include d3.js and scenario.js in headers like below:
 ```html
@@ -22,7 +22,7 @@ Glue d3.js charts and animations together based on definable scenario.
           h: 768 // height of main svg
       });
 ```
-- create your scenario by adding `Scenes` - read below or look at `example` folder 
+- create your scenario by adding `Scenes` - read below or look at [`example`](https://github.com/sariina/scenario/tree/master/example) folder 
 
 ### Scenes
 
