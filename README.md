@@ -24,7 +24,7 @@ Glue d3.js charts and animations together based on definable scenario.
 ```
 - create your scenario by adding `Scenes` - read below or look at `example` folder 
 
-## Scenes
+### Scenes
 
 A `Scenario` is collection of `Scenes`. each `Scene` can be one the following types:
 
@@ -98,17 +98,13 @@ function my_heartbeat_scene(){
 var my_parallel_scene = [my_simple_scene1,my_simple_scene2];
 ```
 
-## Adding Scenes to scenario
+### Adding Scenes to scenario
 
 add your created scenes:
 ```javascript
 scenario.add_scene(my_simple_scene);
 scenario.add_scene(my_heartbeat_scene);
+scenario.add_scene(my_parallel_scene);
 ```
-## Start the animation
+### Start your scenario
 `scenario.start()`
-
-
-
-
-
