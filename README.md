@@ -2,7 +2,7 @@
 
 *this is a work in progress*
 
-Glue d3.js charts and animations together based on definable scenario.
+Create time based animations with d3.js with a definable scenario 
 
 # Usage
 
