@@ -28,7 +28,8 @@ Glue d3.js charts and animations together based on definable scenario.
 
 A `Scenario` is collection of `Scenes`. each `Scene` can be one the following types:
 
-- **1.Simple**: a simple promisifed function,you are free to define multiple steps inside it, each steps should call the next step and the main function should be inside of a Promise.
+- **1. Simple**: a simple promisifed function,you are free to define multiple steps inside it, each steps should call the next step and the main function should be inside of a Promise.
+
 ```javascript
 function my_simple_scene(){
         return new Promise(function(resolve,reject){
@@ -45,7 +46,9 @@ function my_simple_scene(){
         });
 }
 ```
-- **2.Heartbeat**: a class that returns an object consisting of three main methods, promisifed `start`, recurcive `heartbeat` and promisifed `end`. `start` and `end` are just like **Simple** scene type. and heartbeat is meant to run in an infinite loop by calling iteself. heartbeat will end by a `mousedown` event, `Scenario` takes care of ending it.
+- **2. Heartbeat**: a class that returns an object consisting of three main functions, promisifed `start`, recursive `heartbeat` and promisifed `end`. `start` and `end` are just like **Simple** scene type. and heartbeat is meant to run in an infinite loop by calling iteself. heartbeat will end by a `mousedown` event, `Scenario` takes care of ending it.
+for some usecases you can also eliminate each of these three functions.
+
 ```javascript
 function my_heartbeat_scene(){
         var scene = {};
@@ -93,7 +96,8 @@ function my_heartbeat_scene(){
         return scene;
     }
 ```
-- **3.Parallel**: multiple **Simple** scene running toghere in parallel, when all function's promises resolved the scene is complete. it should be defined as an array
+- **3. Parallel**: multiple **Simple** scene running toghere in parallel, when all function's promises resolved the scene is complete. it should be defined as an array
+
 ```javascript
 var my_parallel_scene = [my_simple_scene1,my_simple_scene2];
 ```
@@ -101,6 +105,7 @@ var my_parallel_scene = [my_simple_scene1,my_simple_scene2];
 ### Adding Scenes to scenario
 
 add your created scenes:
+
 ```javascript
 scenario.add_scene(my_simple_scene);
 scenario.add_scene(my_heartbeat_scene);
