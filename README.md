@@ -11,7 +11,7 @@ Glue d3.js charts and animations together based on definable scenario.
 - create a HTML file and include d3.js and scenario.js in headers like below:
 ```html
 <script src="../src/vendors/d3/d3.js"></script>
-<script src="../src/js/d3_scenario.js"></script>
+<script src="../src/js/scenario.js"></script>
 ```
 - initialize your scenario
 ```javascript
