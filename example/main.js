@@ -24,7 +24,7 @@ var Main = (function(scenario){
                 scene.rect = container.append("rect")
                     .attr("width",100)
                     .attr("height",100)
-                    .attr("fill","red")
+                    .attr("fill","red");
                 scene.rect.transition()
                     .duration(scenario.t(500))
                     .attr("width",400)
@@ -69,7 +69,7 @@ var Main = (function(scenario){
                 scene.rect = container.append("rect")
                     .attr("width",100)
                     .attr("height",100)
-                    .attr("fill","green")
+                    .attr("fill","green");
                 scene.rect.transition()
                     .duration(scenario.t(500))
                     .attr("width",400)
