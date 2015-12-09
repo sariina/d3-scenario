@@ -1,4 +1,4 @@
-# scenario
+# d3-scenario
 
 *this is a work in progress*
 
@@ -8,10 +8,10 @@ Create time based animations with d3.js with a definable scenario
 
 - Clone or downlaod the repository
 - `bower install` inside the root
-- create a HTML file and include d3.js and scenario.js in headers like below:
+- create a HTML file and include d3.js and d3-scenario.js in headers like below:
 ```html
 <script src="../src/vendors/d3/d3.js"></script>
-<script src="../src/js/scenario.js"></script>
+<script src="../src/js/d3-scenario.js"></script>
 ```
 - initialize your scenario
 ```javascript
@@ -22,7 +22,7 @@ Create time based animations with d3.js with a definable scenario
           h: 768 // height of main svg
       });
 ```
-- create your scenario by adding `Scenes` - read below or look at [`example`](https://github.com/sariina/scenario/tree/master/example) folder 
+- create your scenario by adding `Scenes` - read below or look at [`example`](https://github.com/sariina/d3-scenario/tree/master/example) folder 
 
 ### Scenes
 

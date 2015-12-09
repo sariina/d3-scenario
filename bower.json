@@ -4,7 +4,7 @@
   "authors": [
     "Sariina <hi@sariina.com>"
   ],
-  "main": "src/js/scenario.js",
+  "main": "src/js/d3-scenario.js",
   "moduleType": [
     "globals"
   ],
